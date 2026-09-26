@@ -355,3 +355,57 @@ body {
 .pin-active {
     color: #eab308 !important;
 }
+
+/* Not Kartı Düzenleme & Otomatik Kayıt Stilleri */
+.editable-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #0f172a;
+    width: 100%;
+    outline: none;
+    border: 1px dashed transparent;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.editable-title:focus {
+    border-color: #94a3b8;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.editable-content {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #334155;
+    outline: none;
+    border: 1px dashed transparent;
+    border-radius: 4px;
+    padding: 4px;
+    min-height: 60px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.editable-content:focus {
+    border-color: #94a3b8;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.save-indicator {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-style: italic;
+    transition: opacity 0.2s;
+}
+
+.save-indicator.saving {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.save-indicator.saved {
+    color: #16a34a;
+    font-weight: 600;
+}

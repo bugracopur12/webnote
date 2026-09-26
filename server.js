@@ -175,6 +175,32 @@ app.post('/api/notes', requireAuth, async (req, res) => {
     }
 });
 
+// Not Güncelleme (Otomatik Kaydetme Desteği)
+app.put('/api/notes/:id', requireAuth, async (req, res) => {
+    const { title, content } = req.body;
+    if (!title || !title.trim()) {
+        return res.status(400).json({ error: 'Başlık boş bırakılamaz.' });
+    }
+
+    try {
+        const result = await pool.query(
+            `UPDATE notes 
+             SET title = $1, content = $2 
+             WHERE id = $3 AND user_id = $4 
+             RETURNING *`,
+            [title.trim(), content || '', req.params.id, req.session.userId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Not bulunamadı.' });
+        }
+
+        res.json({ message: 'Kaydedildi', note: result.rows[0] });
+    } catch (err) {
+        res.status(500).json({ error: 'Güncelleme hatası.' });
+    }
+});
+
 // Not Sil
 app.delete('/api/notes/:id', requireAuth, async (req, res) => {
     try {
