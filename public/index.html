@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Not Defteri</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- GİRİŞ & KAYIT EKRANI -->
+    <div id="auth-container" class="auth-box">
+        <div class="card">
+            <h2 id="auth-title">Giriş Yap</h2>
+            <div id="auth-error" class="error-msg"></div>
+            
+            <form id="auth-form">
+                <div class="input-group" id="username-group" style="display: none;">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" id="username" placeholder="Örn: ahmet123">
+                </div>
+                <div class="input-group">
+                    <label>E-posta</label>
+                    <input type="email" id="email" required placeholder="ornek@mail.com">
+                </div>
+                <div class="input-group">
+                    <label>Şifre</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary">Giriş Yap</button>
+            </form>
+            
+            <p class="toggle-text">
+                <span id="auth-switch-prompt">Hesabın yok mu?</span>
+                <a href="#" id="auth-switch-link">Kayıt Ol</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- NOT UYGULAMASI ANA EKRANI -->
+    <div id="app-container" style="display: none;">
+        <header class="navbar">
+            <div class="brand"><i class="fa-solid fa-note-sticky"></i> Notlarım</div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="search-input" placeholder="Notlarda ara...">
+            </div>
+            <div class="user-panel">
+                <span id="user-greeting">Hoş geldin!</span>
+                <button id="logout-btn" class="btn btn-secondary"><i class="fa-solid fa-arrow-right-from-bracket"></i> Çıkış</button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <aside class="sidebar">
+                <h3>Kategoriler</h3>
+                <ul id="category-filter">
+                    <li class="active" data-cat="Hepsi"><i class="fa-solid fa-layer-group"></i> Hepsi</li>
+                    <li data-cat="İş"><i class="fa-solid fa-briefcase"></i> İş</li>
+                    <li data-cat="Kişisel"><i class="fa-solid fa-user"></i> Kişisel</li>
+                    <li data-cat="Fikirler"><i class="fa-solid fa-lightbulb"></i> Fikirler</li>
+                    <li data-cat="Genel"><i class="fa-solid fa-tag"></i> Genel</li>
+                </ul>
+            </aside>
+
+            <main class="content">
+                <div class="create-note-card">
+                    <input type="text" id="note-title" placeholder="Yeni Not Başlığı..." required>
+                    <textarea id="note-content" placeholder="Aklındakileri buraya dök..." rows="3"></textarea>
+                    
+                    <div class="note-options">
+                        <select id="note-category">
+                            <option value="Genel">Genel</option>
+                            <option value="İş">İş</option>
+                            <option value="Kişisel">Kişisel</option>
+                            <option value="Fikirler">Fikirler</option>
+                        </select>
+                        <select id="note-color">
+                            <option value="#ffffff">Beyaz</option>
+                            <option value="#fef08a">Sarı</option>
+                            <option value="#bbf7d0">Yeşil</option>
+                            <option value="#bfdbfe">Mavi</option>
+                            <option value="#fbcfe8">Pembe</option>
+                        </select>
+                        <button id="add-note-btn" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ekle</button>
+                    </div>
+                </div>
+
+                <div id="notes-grid" class="notes-grid"></div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
